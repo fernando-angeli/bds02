@@ -15,16 +15,16 @@ import java.util.List;
 public class CityController {
 
     @Autowired
-    private CityService service;
+    public CityService service;
 
     @GetMapping
-    private ResponseEntity<List<CityDTO>> findAll(){
+    public ResponseEntity<List<CityDTO>> findAll(){
         List<CityDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @PostMapping
-    private ResponseEntity<CityDTO> insert(@RequestBody CityDTO dto){
+    public ResponseEntity<CityDTO> insert(@RequestBody CityDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -35,7 +35,7 @@ public class CityController {
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
